@@ -58,35 +58,89 @@ function showPurpleQuestion(){
     question.innerHTML = questions.purple[randomQuestion];
 
     listAns = answers.purple[randomQuestion];
+    console.log(listAns)
+    lenAns = listAns.length;
     btnAns.forEach((btn) => {
-        randomAns = Math.floor(Math.random()*listAns);
+        randomAns = Math.floor(Math.random()*lenAns);
+        console.log(randomAns)
         btn.innerHTML = listAns[randomAns];
+        listAns.splice(randomAns,1)
     });
 };
 function showPinkQuestion(){
     tamList = questions.pink.length;
     randomQuestion = Math.floor(Math.random()*tamList)
     question.innerHTML = questions.pink[randomQuestion]
+
+    listAns = answers.pink[randomQuestion];
+    console.log(listAns)
+    lenAns = listAns.length;
+    btnAns.forEach((btn) => {
+        randomAns = Math.floor(Math.random()*lenAns);
+        console.log(randomAns)
+        btn.innerHTML = listAns[randomAns];
+        listAns.splice(randomAns,1)
+    });
 };
 function showRedQuestion(){
     tamList = questions.red.length;
     randomQuestion = Math.floor(Math.random()*tamList)
     question.innerHTML = questions.red[randomQuestion]
+
+    listAns = answers.red[randomQuestion];
+    console.log(listAns)
+    lenAns = listAns.length;
+    btnAns.forEach((btn) => {
+        randomAns = Math.floor(Math.random()*lenAns);
+        console.log(randomAns)
+        btn.innerHTML = listAns[randomAns];
+        listAns.splice(randomAns,1)
+    });
 };
 function showYellowQuestion(){
     tamList = questions.yellow.length;
     randomQuestion = Math.floor(Math.random()*tamList)
     question.innerHTML = questions.yellow[randomQuestion]
+
+    listAns = answers.yellow[randomQuestion];
+    console.log(listAns)
+    lenAns = listAns.length;
+    btnAns.forEach((btn) => {
+        randomAns = Math.floor(Math.random()*lenAns);
+        console.log(randomAns)
+        btn.innerHTML = listAns[randomAns];
+        listAns.splice(randomAns,1)
+    });
 };
 function showGreenQuestion(){
     tamList = questions.green.length;
     randomQuestion = Math.floor(Math.random()*tamList)
     question.innerHTML = questions.green[randomQuestion]
+
+    listAns = answers.green[randomQuestion];
+    console.log(listAns)
+    lenAns = listAns.length;
+    btnAns.forEach((btn) => {
+        randomAns = Math.floor(Math.random()*lenAns);
+        console.log(randomAns)
+        btn.innerHTML = listAns[randomAns];
+        listAns.splice(randomAns,1)
+    });
 };
 function showBlueQuestion(){
     tamList = questions.blue.length;
     randomQuestion = Math.floor(Math.random()*tamList)
     question.innerHTML = questions.blue[randomQuestion]
+
+    listAns = answers.blue[randomQuestion];
+    console.log(listAns)
+    lenAns = listAns.length;
+    btnAns.forEach((btn) => {
+        randomAns = Math.floor(Math.random()*lenAns);
+        console.log(randomAns)
+        btn.innerHTML = listAns[randomAns];
+        listAns.splice(randomAns,1)
+    });
 };
 
 // Objeto com Lista
