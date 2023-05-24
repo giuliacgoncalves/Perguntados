@@ -13,12 +13,15 @@
         <img class="marker" id="button" src="../IMG/Apontador.svg" alt="marker">
         <img class="wheel" src="../IMG/Roleta.svg" alt="wheel">
     </div>
-    <div id="containerQuestions">
-        <div id="question"></div>
+    <div id="containerQuestions" style="visibility: hidden">
+        <img src="../IMG/logo.png" alt="">
+        <!-- testar display: none ou com position absolute -->
+        <div id="question">Perguntados</div>
         <div id="answers">
             <button class="buttonAns" id="awnser1">resp 1</button>
             <button class="buttonAns" id="awnser2">resp 2</button>
             <button class="buttonAns" id="awnser3">resp 3</button>
+            <div id="rightWrong"></div>
         </div>
     </div>
     <script src="../JS/wheel.js"></script>

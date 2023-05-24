@@ -14,14 +14,14 @@ body{
 
 #containerQuestions, #answers{
     width: 70%;
-    height: 60%;
+    height: 70%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-#question{
+#question, #rightWrong{
     margin: 25px;
     font-size: 3rem;
     font-family: Georgia, 'Times New Roman', Times, serif;

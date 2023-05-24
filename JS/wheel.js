@@ -1,6 +1,11 @@
 let deg = 0;
 const wheel = document.querySelector(".wheel");
 const markerBtn = document.querySelector(".marker");
+let points = 0
+
+var question = document.querySelector("#question");
+var btnAns = document.querySelectorAll(".buttonAns");
+let divQuestion = document.getElementById("containerQuestions");
 
 markerBtn.addEventListener("click", () => {
   markerBtn.style.pointerEvents = "none";
@@ -16,6 +21,11 @@ wheel.addEventListener("transitionend", () => {
   wheel.style.transition = "none";
   const actualDeg = deg % 360;
   wheel.style.transform = `rotate(${actualDeg}deg)`;
+  btnAns.forEach((btn=>{
+    btn.disabled = false
+    btn.style.backgroundColor = "#F0F0F0";
+  }))
+  divQuestion.style.visibility = 'visible'
 });
 
 function verificarResultado(deg) {
@@ -46,13 +56,64 @@ function verificarResultado(deg) {
 
 // }
 
-var question = document.querySelector("#question");
-// var btnOne = document.querySelector("#awnser1");
-// var btnTwo = document.querySelector("#awnser2");
-// var btnThree = document.querySelector("#awnser3");
-var btnAns = document.querySelectorAll(".buttonAns");
 
-function showAns(list) {
+function showPurpleQuestion() {
+  var tamList = questions.purple.length;
+  var randomQuestion = Math.floor(Math.random() * tamList);
+  question.innerHTML = questions.purple[randomQuestion];
+  
+  var listAns = answers.purple[randomQuestion];
+  console.log(listAns);
+  showAns(listAns);
+}
+function showPinkQuestion() {
+  tamList = questions.pink.length;
+  randomQuestion = Math.floor(Math.random() * tamList);
+  question.innerHTML = questions.pink[randomQuestion];
+  
+  var listAns = answers.pink[randomQuestion];
+  console.log(listAns);
+  showAns(listAns);
+}
+function showRedQuestion() {
+  tamList = questions.red.length;
+  randomQuestion = Math.floor(Math.random() * tamList);
+  question.innerHTML = questions.red[randomQuestion];
+  
+  var listAns = answers.red[randomQuestion];
+  console.log(listAns);
+  showAns(listAns);
+}
+function showYellowQuestion() {
+  tamList = questions.yellow.length;
+  randomQuestion = Math.floor(Math.random() * tamList);
+  question.innerHTML = questions.yellow[randomQuestion];
+  
+  var listAns = answers.yellow[randomQuestion];
+  console.log(listAns);
+  showAns(listAns);
+}
+function showGreenQuestion() {
+  tamList = questions.green.length;
+  randomQuestion = Math.floor(Math.random() * tamList);
+  question.innerHTML = questions.green[randomQuestion];
+  
+  var listAns = answers.green[randomQuestion];
+  console.log(listAns);
+  showAns(listAns);
+}
+function showBlueQuestion() {
+  tamList = questions.blue.length;
+  randomQuestion = Math.floor(Math.random() * tamList);
+  question.innerHTML = questions.blue[randomQuestion];
+  
+  var listAns = answers.blue[randomQuestion];
+  console.log(listAns);
+  showAns(listAns);
+}
+
+function showAns(lista) {
+  var list = lista
   var lenAns = list.length;
   btnAns.forEach((btn) => {
     var randomAns = Math.floor(Math.random() * lenAns);
@@ -62,6 +123,7 @@ function showAns(list) {
     list = list.filter(function (item) {
       return item !== itemList;
     });
+    btn.classList.add(randomAns)
     console.log(list);
     lenAns--;
 
@@ -69,62 +131,90 @@ function showAns(list) {
   });
 }
 
-function showPurpleQuestion() {
-  var tamList = questions.purple.length;
-  var randomQuestion = Math.floor(Math.random() * tamList);
-  question.innerHTML = questions.purple[randomQuestion];
+var rightWrong = document.getElementById("rightWrong")
+btnAns.forEach((btn) => {
+  btn.addEventListener("click", compareAnswer)
+})
 
-  var listAns = answers.purple[randomQuestion];
-  console.log(listAns);
-  showAns(listAns);
+function compareAnswer(evt){
+  let alvoClicado = evt.target;
+  let valor = alvoClicado.innerHTML;
+
+  let parentElement = alvoClicado.parentNode;
+  let siblings = Array.from(parentElement.children);
+  let targetSiblings = siblings.filter(sibling => sibling !== alvoClicado);
+  console.log(targetSiblings)
+
+  let ansPurple = answers.purple
+  let ansPink = answers.pink
+  let ansRed = answers.red
+  let ansYellow = answers.yellow
+  let ansGreen = answers.green
+  let ansBlue = answers.blue
+
+  if(valor == ansPurple[0][0]||valor == ansPurple[1][0]||valor == ansPurple[2][0]){
+    console.log(ansPurple)
+    alvoClicado.style.backgroundColor = 'lightgreen';
+    points++;
+    rightWrong.innerHTML = "Correto!";
+    targetSiblings.forEach((sibling=>{
+      sibling.disabled = true
+    }))
+  }else if(valor == ansPink[0][0]||valor == ansPink[1][0]||valor == ansPink[2][0]){
+    console.log(ansPink)
+    alvoClicado.style.backgroundColor = 'lightgreen';
+    points++;
+    rightWrong.innerHTML = "Correto!";
+    targetSiblings.forEach((sibling=>{
+      sibling.disabled = true
+    }))
+  }else if(valor == ansRed[0][0]||valor == ansRed[1][0]||valor == ansRed[2][0]){
+    console.log(ansRed)
+    alvoClicado.style.backgroundColor = 'lightgreen';
+    points++;
+    rightWrong.innerHTML = "Correto!";
+    targetSiblings.forEach((sibling=>{
+      sibling.disabled = true
+    }))
+  }else if(valor == ansYellow[0][0]||valor == ansYellow[1][0]||valor == ansYellow[2][0]){
+    console.log(ansYellow)
+    alvoClicado.style.backgroundColor = 'lightgreen';
+    points++;
+    rightWrong.innerHTML = "Correto!";
+    targetSiblings.forEach((sibling=>{
+      sibling.disabled = true
+    }))
+  }else if(valor == ansGreen[0][0]||valor == ansGreen[1][0]||valor == ansGreen[2][0]){
+    console.log(ansGreen)
+    alvoClicado.style.backgroundColor = 'lightgreen';
+    points++;
+    rightWrong.innerHTML = "Correto!";
+    targetSiblings.forEach((sibling=>{
+      sibling.disabled = true
+    }))
+  }else if(valor == ansBlue[0][0]||valor == ansBlue[1][0]||valor == ansBlue[2][0]){
+    console.log(ansBlue)
+    alvoClicado.style.backgroundColor = 'lightgreen';
+    points++;
+    rightWrong.innerHTML = "Correto!";
+    targetSiblings.forEach((sibling=>{
+      sibling.disabled = true
+    }))
+  }else{
+    alvoClicado.style.backgroundColor = 'red';
+    rightWrong.innerHTML = "Errado!";
+    targetSiblings.forEach((sibling=>{
+      sibling.disabled = true
+    }))
+  }
 }
-function showPinkQuestion() {
-  tamList = questions.pink.length;
-  randomQuestion = Math.floor(Math.random() * tamList);
-  question.innerHTML = questions.pink[randomQuestion];
 
-  var listAns = answers.pink[randomQuestion];
-  console.log(listAns);
-  showAns(listAns);
-}
-function showRedQuestion() {
-  tamList = questions.red.length;
-  randomQuestion = Math.floor(Math.random() * tamList);
-  question.innerHTML = questions.red[randomQuestion];
 
-  var listAns = answers.red[randomQuestion];
-  console.log(listAns);
-  showAns(listAns);
-}
-function showYellowQuestion() {
-  tamList = questions.yellow.length;
-  randomQuestion = Math.floor(Math.random() * tamList);
-  question.innerHTML = questions.yellow[randomQuestion];
 
-  var listAns = answers.yellow[randomQuestion];
-  console.log(listAns);
-  showAns(listAns);
-}
-function showGreenQuestion() {
-  tamList = questions.green.length;
-  randomQuestion = Math.floor(Math.random() * tamList);
-  question.innerHTML = questions.green[randomQuestion];
 
-  var listAns = answers.green[randomQuestion];
-  console.log(listAns);
-  showAns(listAns);
-}
-function showBlueQuestion() {
-  tamList = questions.blue.length;
-  randomQuestion = Math.floor(Math.random() * tamList);
-  question.innerHTML = questions.blue[randomQuestion];
 
-  var listAns = answers.blue[randomQuestion];
-  console.log(listAns);
-  showAns(listAns);
-}
 
-// Objeto com Lista
+// Objeto com Lista para as perguntas
 let questions = {
   purple: [
     "Quem pintou a famosa obra 'Mona Lisa'?",
@@ -165,8 +255,8 @@ let answers = {
     ["Picasso", "Salvador Dalí", "Michelangelo"],
   ],
   pink: [
-    ["Parasita", "Frozen", "Avengers"],
-    ["Frozen", "Titanic", "Charlie Chaplin"],
+    ["Parasita", "1917", "Coringa"],
+    ["Frozen", "Super Mario Bros", "Sherek"],
     ["Robert Downey Jr", "Mark Ruffalo", "Chris Evans"],
   ],
   red: [
