@@ -6,6 +6,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 .wheel{
@@ -33,4 +34,11 @@ button{
     font-size: 2.5rem;
     margin-bottom: 25px;
     font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#logoPerguntados{
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    margin-left: 25%;
 }

@@ -2,6 +2,8 @@ let deg = 0;
 const wheel = document.querySelector(".wheel");
 const markerBtn = document.querySelector(".marker");
 let points = 0
+let imgLogo = document.querySelector('#logoPerguntados');
+var rightWrong = document.getElementById("rightWrong");
 
 var question = document.querySelector("#question");
 var btnAns = document.querySelectorAll(".buttonAns");
@@ -14,6 +16,7 @@ markerBtn.addEventListener("click", () => {
   wheel.style.transform = `rotate(${deg}deg)`;
   // Para colocar um timer na função antes de executar:
   setTimeout(() => verificarResultado(deg % 360), 10000);
+  rightWrong.style.visibility = 'hidden'
 });
 
 wheel.addEventListener("transitionend", () => {
@@ -26,6 +29,7 @@ wheel.addEventListener("transitionend", () => {
     btn.style.backgroundColor = "#F0F0F0";
   }))
   divQuestion.style.visibility = 'visible'
+  imgLogo.style.visibility = 'hidden'
 });
 
 function verificarResultado(deg) {
@@ -131,7 +135,6 @@ function showAns(lista) {
   });
 }
 
-var rightWrong = document.getElementById("rightWrong")
 btnAns.forEach((btn) => {
   btn.addEventListener("click", compareAnswer)
 })
@@ -157,6 +160,7 @@ function compareAnswer(evt){
     alvoClicado.style.backgroundColor = 'lightgreen';
     points++;
     rightWrong.innerHTML = "Correto!";
+    rightWrong.style.visibility = 'visible'
     targetSiblings.forEach((sibling=>{
       sibling.disabled = true
     }))
@@ -165,6 +169,7 @@ function compareAnswer(evt){
     alvoClicado.style.backgroundColor = 'lightgreen';
     points++;
     rightWrong.innerHTML = "Correto!";
+    rightWrong.style.visibility = 'visible'
     targetSiblings.forEach((sibling=>{
       sibling.disabled = true
     }))
@@ -173,6 +178,7 @@ function compareAnswer(evt){
     alvoClicado.style.backgroundColor = 'lightgreen';
     points++;
     rightWrong.innerHTML = "Correto!";
+    rightWrong.style.visibility = 'visible'
     targetSiblings.forEach((sibling=>{
       sibling.disabled = true
     }))
@@ -181,6 +187,7 @@ function compareAnswer(evt){
     alvoClicado.style.backgroundColor = 'lightgreen';
     points++;
     rightWrong.innerHTML = "Correto!";
+    rightWrong.style.visibility = 'visible'
     targetSiblings.forEach((sibling=>{
       sibling.disabled = true
     }))
@@ -189,6 +196,7 @@ function compareAnswer(evt){
     alvoClicado.style.backgroundColor = 'lightgreen';
     points++;
     rightWrong.innerHTML = "Correto!";
+    rightWrong.style.visibility = 'visible'
     targetSiblings.forEach((sibling=>{
       sibling.disabled = true
     }))
@@ -197,12 +205,14 @@ function compareAnswer(evt){
     alvoClicado.style.backgroundColor = 'lightgreen';
     points++;
     rightWrong.innerHTML = "Correto!";
+    rightWrong.style.visibility = 'visible'
     targetSiblings.forEach((sibling=>{
       sibling.disabled = true
     }))
   }else{
     alvoClicado.style.backgroundColor = 'red';
     rightWrong.innerHTML = "Errado!";
+    rightWrong.style.visibility = 'visible'
     targetSiblings.forEach((sibling=>{
       sibling.disabled = true
     }))
@@ -256,7 +266,7 @@ let answers = {
   ],
   pink: [
     ["Parasita", "1917", "Coringa"],
-    ["Frozen", "Super Mario Bros", "Sherek"],
+    ["Frozen", "Super Mario Bros", "Shrek"],
     ["Robert Downey Jr", "Mark Ruffalo", "Chris Evans"],
   ],
   red: [
