@@ -71,16 +71,19 @@ function showPurpleQuestion() {
   var tamList = questions.purple.length;
   var randomQuestion = Math.floor(Math.random() * tamList);
   question.innerHTML = questions.purple[randomQuestion];
+  questions.purple = questions.purple.splice(randomQuestion, 1)
   
   var listAns = answers.purple[randomQuestion];
   console.log(listAns);
   showAns(listAns);
 }
-function showPinkQuestion() {
+function showPinkQuestion(color) {
   tamList = questions.pink.length;
   randomQuestion = Math.floor(Math.random() * tamList);
   question.innerHTML = questions.pink[randomQuestion];
-  
+  questions.pink = questions.pink.splice(randomQuestion, 1)
+  // questions[color] -> função generica 
+
   var listAns = answers.pink[randomQuestion];
   console.log(listAns);
   showAns(listAns);
@@ -89,6 +92,7 @@ function showRedQuestion() {
   tamList = questions.red.length;
   randomQuestion = Math.floor(Math.random() * tamList);
   question.innerHTML = questions.red[randomQuestion];
+  questions.red = questions.red.splice(randomQuestion, 1)
   
   var listAns = answers.red[randomQuestion];
   console.log(listAns);
@@ -98,6 +102,7 @@ function showYellowQuestion() {
   tamList = questions.yellow.length;
   randomQuestion = Math.floor(Math.random() * tamList);
   question.innerHTML = questions.yellow[randomQuestion];
+  questions.yellow = questions.yellow.splice(randomQuestion, 1)
   
   var listAns = answers.yellow[randomQuestion];
   console.log(listAns);
@@ -107,6 +112,7 @@ function showGreenQuestion() {
   tamList = questions.green.length;
   randomQuestion = Math.floor(Math.random() * tamList);
   question.innerHTML = questions.green[randomQuestion];
+  questions.green = questions.green.splice(randomQuestion, 1)
   
   var listAns = answers.green[randomQuestion];
   console.log(listAns);
@@ -116,6 +122,7 @@ function showBlueQuestion() {
   tamList = questions.blue.length;
   randomQuestion = Math.floor(Math.random() * tamList);
   question.innerHTML = questions.blue[randomQuestion];
+  questions.blue = questions.blue.splice(randomQuestion, 1)
   
   var listAns = answers.blue[randomQuestion];
   console.log(listAns);
@@ -235,7 +242,7 @@ function compareResults(right,wrong){
 }
 
 function noRepeatQuestion(){
-  
+
 }
 
 // Objeto com Lista para as perguntas
