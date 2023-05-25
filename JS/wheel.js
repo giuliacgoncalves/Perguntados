@@ -1,12 +1,15 @@
 let deg = 0;
 const wheel = document.querySelector(".wheel");
 const markerBtn = document.querySelector(".marker");
-let points = 0
+let points = 0;
+let worngQuestion = 0;
 let imgLogo = document.querySelector('#logoPerguntados');
-var rightWrong = document.getElementById("rightWrong");
+let rightWrong = document.getElementById("rightWrong");
+let score = document.getElementById('score');
 
-var question = document.querySelector("#question");
-var btnAns = document.querySelectorAll(".buttonAns");
+
+let question = document.querySelector("#question");
+let btnAns = document.querySelectorAll(".buttonAns");
 let divQuestion = document.getElementById("containerQuestions");
 
 markerBtn.addEventListener("click", () => {
@@ -20,7 +23,6 @@ markerBtn.addEventListener("click", () => {
 });
 
 wheel.addEventListener("transitionend", () => {
-  markerBtn.style.pointerEvents = "auto";
   wheel.style.transition = "none";
   const actualDeg = deg % 360;
   wheel.style.transform = `rotate(${actualDeg}deg)`;
@@ -47,7 +49,11 @@ function verificarResultado(deg) {
   } else if (deg >= 309 && deg <= 357) {
     showBlueQuestion();
   } else {
-    alert("gire novamente");
+    rightWrong.innerHTML = "Gire Novamente";
+    btnAns.forEach((btn=>{
+      btn.disabled = false
+      btn.style.backgroundColor = "#F0F0F0";
+    }))
   }
 }
 
@@ -210,6 +216,7 @@ function compareAnswer(evt){
       sibling.disabled = true
     }))
   }else{
+    worngQuestion++;
     alvoClicado.style.backgroundColor = 'red';
     rightWrong.innerHTML = "Errado!";
     rightWrong.style.visibility = 'visible'
@@ -217,12 +224,19 @@ function compareAnswer(evt){
       sibling.disabled = true
     }))
   }
+  score.innerHTML = "Score: " + points;
+  score.style.visibility = 'visible';
+  markerBtn.style.pointerEvents = "auto";
 }
 
+function compareResults(right,wrong){
+  total = (right+wrong);
+  return (right/total)*100;
+}
 
-
-
-
+function noRepeatQuestion(){
+  
+}
 
 // Objeto com Lista para as perguntas
 let questions = {
