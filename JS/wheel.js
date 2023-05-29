@@ -83,7 +83,7 @@ function showPinkQuestion(color) {
   question.innerHTML = questions.pink[randomQuestion];
   questions.pink = questions.pink.splice(randomQuestion, 1)
   // questions[color] -> função generica 
-
+console.log(questions)
   var listAns = answers.pink[randomQuestion];
   console.log(listAns);
   showAns(listAns);
@@ -93,7 +93,7 @@ function showRedQuestion() {
   randomQuestion = Math.floor(Math.random() * tamList);
   question.innerHTML = questions.red[randomQuestion];
   questions.red = questions.red.splice(randomQuestion, 1)
-  
+  console.log(questions)
   var listAns = answers.red[randomQuestion];
   console.log(listAns);
   showAns(listAns);
@@ -103,7 +103,7 @@ function showYellowQuestion() {
   randomQuestion = Math.floor(Math.random() * tamList);
   question.innerHTML = questions.yellow[randomQuestion];
   questions.yellow = questions.yellow.splice(randomQuestion, 1)
-  
+  console.log(questions)
   var listAns = answers.yellow[randomQuestion];
   console.log(listAns);
   showAns(listAns);
@@ -113,7 +113,7 @@ function showGreenQuestion() {
   randomQuestion = Math.floor(Math.random() * tamList);
   question.innerHTML = questions.green[randomQuestion];
   questions.green = questions.green.splice(randomQuestion, 1)
-  
+  console.log(questions)
   var listAns = answers.green[randomQuestion];
   console.log(listAns);
   showAns(listAns);
@@ -123,6 +123,7 @@ function showBlueQuestion() {
   randomQuestion = Math.floor(Math.random() * tamList);
   question.innerHTML = questions.blue[randomQuestion];
   questions.blue = questions.blue.splice(randomQuestion, 1)
+  console.log(questions)
   
   var listAns = answers.blue[randomQuestion];
   console.log(listAns);
