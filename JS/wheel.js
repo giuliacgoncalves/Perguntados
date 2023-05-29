@@ -36,18 +36,18 @@ wheel.addEventListener("transitionend", () => {
 
 function verificarResultado(deg) {
   console.log(deg);
-  if (deg >= 9 && deg <= 58) {
-    showPurpleQuestion();
-  } else if (deg >= 69 && deg <= 117) {
-    showPinkQuestion();
-  } else if (deg >= 128 && deg <= 177) {
-    showRedQuestion();
-  } else if (deg >= 188 && deg <= 237) {
-    showYellowQuestion();
-  } else if (deg >= 248 && deg <= 297) {
-    showGreenQuestion();
-  } else if (deg >= 309 && deg <= 357) {
-    showBlueQuestion();
+  if (deg >= 0 && deg <= 60) {
+    showQuestion("purple");
+  } else if (deg >= 61 && deg <= 120) {
+    showQuestion("pink");
+  } else if (deg >= 121 && deg <= 180) {
+    showQuestion("red");
+  } else if (deg >= 181 && deg <= 240) {
+    showQuestion("yellow");
+  } else if (deg >= 241 && deg <= 300) {
+    showQuestion("green");
+  } else if (deg >= 301 && deg <= 360) {
+    showQuestion("blue");
   } else {
     rightWrong.innerHTML = "Gire Novamente";
     btnAns.forEach((btn=>{
@@ -67,67 +67,15 @@ function verificarResultado(deg) {
 // }
 
 
-function showPurpleQuestion() {
-  var tamList = questions.purple.length;
+function showQuestion(color) {
+  var tamList = questions[color].length;
   var randomQuestion = Math.floor(Math.random() * tamList);
-  question.innerHTML = questions.purple[randomQuestion];
-  questions.purple = questions.purple.splice(randomQuestion, 1)
+  question.innerHTML = questions[color][randomQuestion];
   
-  var listAns = answers.purple[randomQuestion];
-  console.log(listAns);
-  showAns(listAns);
-}
-function showPinkQuestion(color) {
-  tamList = questions.pink.length;
-  randomQuestion = Math.floor(Math.random() * tamList);
-  question.innerHTML = questions.pink[randomQuestion];
-  questions.pink = questions.pink.splice(randomQuestion, 1)
-  // questions[color] -> função generica 
-console.log(questions)
-  var listAns = answers.pink[randomQuestion];
-  console.log(listAns);
-  showAns(listAns);
-}
-function showRedQuestion() {
-  tamList = questions.red.length;
-  randomQuestion = Math.floor(Math.random() * tamList);
-  question.innerHTML = questions.red[randomQuestion];
-  questions.red = questions.red.splice(randomQuestion, 1)
-  console.log(questions)
-  var listAns = answers.red[randomQuestion];
-  console.log(listAns);
-  showAns(listAns);
-}
-function showYellowQuestion() {
-  tamList = questions.yellow.length;
-  randomQuestion = Math.floor(Math.random() * tamList);
-  question.innerHTML = questions.yellow[randomQuestion];
-  questions.yellow = questions.yellow.splice(randomQuestion, 1)
-  console.log(questions)
-  var listAns = answers.yellow[randomQuestion];
-  console.log(listAns);
-  showAns(listAns);
-}
-function showGreenQuestion() {
-  tamList = questions.green.length;
-  randomQuestion = Math.floor(Math.random() * tamList);
-  question.innerHTML = questions.green[randomQuestion];
-  questions.green = questions.green.splice(randomQuestion, 1)
-  console.log(questions)
-  var listAns = answers.green[randomQuestion];
-  console.log(listAns);
-  showAns(listAns);
-}
-function showBlueQuestion() {
-  tamList = questions.blue.length;
-  randomQuestion = Math.floor(Math.random() * tamList);
-  question.innerHTML = questions.blue[randomQuestion];
-  questions.blue = questions.blue.splice(randomQuestion, 1)
-  console.log(questions)
-  
-  var listAns = answers.blue[randomQuestion];
-  console.log(listAns);
-  showAns(listAns);
+  var listAns = answers[color][randomQuestion];
+
+  showAns(listAns)
+  noRepeatQuestion(color,randomQuestion)
 }
 
 function showAns(lista) {
@@ -242,7 +190,9 @@ function compareResults(right,wrong){
   return (right/total)*100;
 }
 
-function noRepeatQuestion(){
+function noRepeatQuestion(color, randomNum){
+  let repeatQuestion = questions[color]
+  repeatQuestion.splice(randomNum, 1)
 
 }
 
