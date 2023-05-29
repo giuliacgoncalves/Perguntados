@@ -10,7 +10,7 @@ body{
 }
 
 .wheel{
-    transform: rotate(300deg);
+    transform: rotate(0deg);
 }
 
 #containerQuestions, #answers{
