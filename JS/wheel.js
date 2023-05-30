@@ -35,7 +35,6 @@ wheel.addEventListener("transitionend", () => {
 });
 
 function verificarResultado(deg) {
-  console.log(deg);
   if (deg >= 0 && deg <= 60) {
     showQuestion("purple");
   } else if (deg >= 61 && deg <= 120) {
@@ -68,14 +67,20 @@ function verificarResultado(deg) {
 
 
 function showQuestion(color) {
-  var tamList = questions[color].length;
-  var randomQuestion = Math.floor(Math.random() * tamList);
-  question.innerHTML = questions[color][randomQuestion];
-  
-  var listAns = answers[color][randomQuestion];
+  let listQuestions = questions[color]
+  let tamList = listQuestions.length;
+  let randomQuestion = Math.floor(Math.random() * tamList);
 
-  showAns(listAns)
-  noRepeatQuestion(color,randomQuestion)
+  if(listQuestions[randomQuestion]!='' || listAns!=''){
+    question.innerHTML = listQuestions[randomQuestion];
+
+    let listAns = answers[color][randomQuestion];
+  
+    showAns(listAns)
+    noRepeatQuestion(randomQuestion,listQuestions,listAns)
+  }else{
+    return
+  }
 }
 
 function showAns(lista) {
@@ -84,13 +89,11 @@ function showAns(lista) {
   btnAns.forEach((btn) => {
     var randomAns = Math.floor(Math.random() * lenAns);
     var itemList = list[randomAns];
-    console.log(randomAns);
     btn.innerHTML = itemList;
     list = list.filter(function (item) {
       return item !== itemList;
     });
     btn.classList.add(randomAns)
-    console.log(list);
     lenAns--;
 
     //  list.splice(randomAns, 1);
@@ -108,7 +111,6 @@ function compareAnswer(evt){
   let parentElement = alvoClicado.parentNode;
   let siblings = Array.from(parentElement.children);
   let targetSiblings = siblings.filter(sibling => sibling !== alvoClicado);
-  console.log(targetSiblings)
 
   let ansPurple = answers.purple
   let ansPink = answers.pink
@@ -118,7 +120,6 @@ function compareAnswer(evt){
   let ansBlue = answers.blue
 
   if(valor == ansPurple[0][0]||valor == ansPurple[1][0]||valor == ansPurple[2][0]){
-    console.log(ansPurple)
     alvoClicado.style.backgroundColor = 'lightgreen';
     points++;
     rightWrong.innerHTML = "Correto!";
@@ -127,7 +128,6 @@ function compareAnswer(evt){
       sibling.disabled = true
     }))
   }else if(valor == ansPink[0][0]||valor == ansPink[1][0]||valor == ansPink[2][0]){
-    console.log(ansPink)
     alvoClicado.style.backgroundColor = 'lightgreen';
     points++;
     rightWrong.innerHTML = "Correto!";
@@ -136,7 +136,6 @@ function compareAnswer(evt){
       sibling.disabled = true
     }))
   }else if(valor == ansRed[0][0]||valor == ansRed[1][0]||valor == ansRed[2][0]){
-    console.log(ansRed)
     alvoClicado.style.backgroundColor = 'lightgreen';
     points++;
     rightWrong.innerHTML = "Correto!";
@@ -145,7 +144,6 @@ function compareAnswer(evt){
       sibling.disabled = true
     }))
   }else if(valor == ansYellow[0][0]||valor == ansYellow[1][0]||valor == ansYellow[2][0]){
-    console.log(ansYellow)
     alvoClicado.style.backgroundColor = 'lightgreen';
     points++;
     rightWrong.innerHTML = "Correto!";
@@ -154,7 +152,6 @@ function compareAnswer(evt){
       sibling.disabled = true
     }))
   }else if(valor == ansGreen[0][0]||valor == ansGreen[1][0]||valor == ansGreen[2][0]){
-    console.log(ansGreen)
     alvoClicado.style.backgroundColor = 'lightgreen';
     points++;
     rightWrong.innerHTML = "Correto!";
@@ -163,7 +160,6 @@ function compareAnswer(evt){
       sibling.disabled = true
     }))
   }else if(valor == ansBlue[0][0]||valor == ansBlue[1][0]||valor == ansBlue[2][0]){
-    console.log(ansBlue)
     alvoClicado.style.backgroundColor = 'lightgreen';
     points++;
     rightWrong.innerHTML = "Correto!";
@@ -190,10 +186,9 @@ function compareResults(right,wrong){
   return (right/total)*100;
 }
 
-function noRepeatQuestion(color, randomNum){
-  let repeatQuestion = questions[color]
-  repeatQuestion.splice(randomNum, 1)
-
+function noRepeatQuestion(randomNum, listQuestions, listAns){
+  listQuestions.splice(randomNum, 1)
+  listAns = 0
 }
 
 // Objeto com Lista para as perguntas

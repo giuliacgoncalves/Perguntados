@@ -26,6 +26,7 @@ body{
     margin: 25px;
     font-size: 3rem;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    color: rgb(240, 240, 240);
 }
 
 button{
@@ -49,5 +50,6 @@ button{
     position: absolute;
     top: 15px;
     font-size: 1.5rem;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: Impact, 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
+    color: rgb(240, 240, 240);
 }
