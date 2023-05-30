@@ -12,9 +12,12 @@ let question = document.querySelector("#question");
 let btnAns = document.querySelectorAll(".buttonAns");
 let divQuestion = document.getElementById("containerQuestions");
 
+// Para fazer a roda girar
 markerBtn.addEventListener("click", () => {
   markerBtn.style.pointerEvents = "none";
   deg = Math.floor(5000 + Math.random() * 3600);
+  // Aqui vc deve comparar se a lista de perguntas/respostas está vazia, caso estiver, passar para o proximo tema que não esteja vazio, 
+  // até terminar as 18 perguntas e, por fim, mostrar a porcentagem de acertos que a pessoa teve
   wheel.style.transition = "all 10s ease-in-out";
   wheel.style.transform = `rotate(${deg}deg)`;
   // Para colocar um timer na função antes de executar:
@@ -22,6 +25,7 @@ markerBtn.addEventListener("click", () => {
   rightWrong.style.visibility = 'hidden'
 });
 
+// Evento após a rotação
 wheel.addEventListener("transitionend", () => {
   wheel.style.transition = "none";
   const actualDeg = deg % 360;
@@ -64,7 +68,6 @@ function verificarResultado(deg) {
 // perguntas.roxa.length
 
 // }
-
 
 function showQuestion(color) {
   let listQuestions = questions[color]
@@ -141,13 +144,13 @@ function compareAnswer(evt){
   parentElement.querySelector(".rightAnswer").classList.remove("rightAnswer")
 }
 
+// Função para saber a porcentagem de acertos do usuário
 function compareResults(right,wrong){
   total = (right+wrong);
   return (right/total)*100;
 }
 
 function noRepeatQuestion(listAnswer,listQuestions,randomNum){
-  
   listQuestions.splice(randomNum, 1)
   listAnswer.splice(randomNum,1)
 }
@@ -186,6 +189,7 @@ let questions = {
   ],
 };
 
+// Objeto com Listas de listas para as respostas
 let answers = {
   purple: [
     ["Leonardo da Vinci", "Picasso", "Van Gogh"],
