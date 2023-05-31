@@ -198,7 +198,7 @@ let answers = {
   ],
   pink: [
     ["Parasita", "1917", "Coringa"],
-    ["Frozen", "Super Mario Bros", "Shrek"],
+    ["Frozen 2", "Super Mario Bros", "Shrek"],
     ["Robert Downey Jr", "Mark Ruffalo", "Chris Evans"],
   ],
   red: [
@@ -218,7 +218,7 @@ let answers = {
   ],
   blue: [
     ["Rússia", "Brazil", "Canadá"],
-    ["Pacífico", "Índico", "Atlêntico"],
+    ["Pacífico", "Índico", "Atlântico"],
     ["Amazonas", "Nilo", "Mississippi"],
   ],
 };
