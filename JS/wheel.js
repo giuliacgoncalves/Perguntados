@@ -20,7 +20,7 @@ markerBtn.addEventListener("click", () => {
   deg = Math.floor(5000 + Math.random() * 3600);
   // Aqui vc deve comparar se a lista de perguntas/respostas está vazia, caso estiver, passar para o proximo tema que não esteja vazio, 
   // até terminar as 18 perguntas e, por fim, mostrar a porcentagem de acertos que a pessoa teve
-  verifyIsEmpty(deg)
+  verifyIsEmpty(deg) // tentar colocar a verificação na função verificarResultado
   wheel.style.transition = "all 10s ease-in-out";
   wheel.style.transform = `rotate(${deg}deg)`;
   // Para colocar um timer na função antes de executar:
