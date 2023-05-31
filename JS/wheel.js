@@ -7,6 +7,8 @@ let imgLogo = document.querySelector('#logoPerguntados');
 let rightWrong = document.getElementById("rightWrong");
 let score = document.getElementById('score');
 
+let listQuestions;
+let listAnswer;
 
 let question = document.querySelector("#question");
 let btnAns = document.querySelectorAll(".buttonAns");
@@ -18,6 +20,7 @@ markerBtn.addEventListener("click", () => {
   deg = Math.floor(5000 + Math.random() * 3600);
   // Aqui vc deve comparar se a lista de perguntas/respostas está vazia, caso estiver, passar para o proximo tema que não esteja vazio, 
   // até terminar as 18 perguntas e, por fim, mostrar a porcentagem de acertos que a pessoa teve
+  verifyIsEmpty(deg)
   wheel.style.transition = "all 10s ease-in-out";
   wheel.style.transform = `rotate(${deg}deg)`;
   // Para colocar um timer na função antes de executar:
@@ -69,13 +72,27 @@ function verificarResultado(deg) {
 
 // }
 
+function verifyIsEmpty(deg){
+  deg = deg % 360
+  console.log(deg)
+  console.log(listQuestions)
+  console.log(listAnswer)
+  while(true){
+    if(listQuestions===0 && listAnswer===0){
+      deg+=60
+      console.log(deg)
+    }
+    break
+  }
+}
+
 function showQuestion(color) {
-  let listQuestions = questions[color]
+  listQuestions = questions[color]
   let tamList = listQuestions.length;
   let randomQuestion = Math.floor(Math.random() * tamList);
   question.innerHTML = listQuestions[randomQuestion];
   
-  let listAnswer = answers[color]
+  listAnswer = answers[color]
   let listAns = listAnswer[randomQuestion];
 
   if(listQuestions!=undefined || listAns!=undefined){
@@ -103,8 +120,6 @@ function showAns(lista) {
     });
     btn.classList.add(randomAns)
     lenAns--;
-
-    //  list.splice(randomAns, 1);
   });
 }
 
